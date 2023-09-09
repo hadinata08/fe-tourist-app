@@ -36,7 +36,7 @@ export const columns: ColumnsType<DataTourisms> = [
       <div className=" flex justify-center items-center">
         <img
           src={sourceImg}
-          alt={sourceImg}
+          alt={"pp-img"}
           className="w-10 h-10 flex justify-center"
         />
       </div>
