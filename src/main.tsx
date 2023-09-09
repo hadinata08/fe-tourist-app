@@ -10,8 +10,6 @@ import EditTourisms from "./views/EditTourisms";
 import Navbar from "./components/molecules/Navbar";
 import DetailProfile from "./views/DetailProfile";
 
-const tokenSession: any = localStorage.getItem("token");
-
 const router = createBrowserRouter([
   {
     path: "/",
