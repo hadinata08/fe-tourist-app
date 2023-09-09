@@ -6,9 +6,6 @@ import { BFFServiceInstance } from "../config/axios";
 // import { BFFServiceInstance } from "../config/axios";
 import { DataTourisms } from "../types/DataTourims";
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const tokenSession: any = localStorage.getItem("token");
-
 export const columns: ColumnsType<DataTourisms> = [
   {
     title: "ID",
@@ -49,41 +46,45 @@ export const columns: ColumnsType<DataTourisms> = [
     title: "Action",
     dataIndex: "action",
     key: "action",
-    render: (_, { id, tourist_email, tourist_location, tourist_name }) => (
-      <Space size="middle">
-        <a href={`/edit-tourisms/${id}`}>Ubah</a>
-        <a
-          onClick={async () => {
-            await BFFServiceInstance({
-              method: "DELETE",
-              url: `/api/Tourist/${id}`,
-              data: {
-                id: id,
-                tourist_name: tourist_name,
-                tourist_location: tourist_location,
-                tourist_email: tourist_email,
-              },
-              headers: {
-                Authorization: `Bearer ${tokenSession}`,
-              },
-              transformRequest: [
-                (data) => {
-                  const formData = new URLSearchParams();
-                  for (const key in data) {
-                    formData.append(key, data[key]);
-                  }
-                  return formData.toString();
+    render: (_, { id, tourist_email, tourist_location, tourist_name }) => {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const tokenSession: any = localStorage.getItem("token");
+      return (
+        <Space size="middle">
+          <a href={`/edit-tourisms/${id}`}>Ubah</a>
+          <a
+            onClick={async () => {
+              await BFFServiceInstance({
+                method: "DELETE",
+                url: `/api/Tourist/${id}`,
+                data: {
+                  id: id,
+                  tourist_name: tourist_name,
+                  tourist_location: tourist_location,
+                  tourist_email: tourist_email,
                 },
-              ],
-            }).then(() => {
-              message.success("Data has been deleted!");
-              setTimeout(() => window.location.reload(), 1500);
-            });
-          }}
-        >
-          Hapus
-        </a>
-      </Space>
-    ),
+                headers: {
+                  Authorization: `Bearer ${tokenSession}`,
+                },
+                transformRequest: [
+                  (data) => {
+                    const formData = new URLSearchParams();
+                    for (const key in data) {
+                      formData.append(key, data[key]);
+                    }
+                    return formData.toString();
+                  },
+                ],
+              }).then(() => {
+                message.success("Data has been deleted!");
+                setTimeout(() => window.location.reload(), 1500);
+              });
+            }}
+          >
+            Hapus
+          </a>
+        </Space>
+      );
+    },
   },
 ];
