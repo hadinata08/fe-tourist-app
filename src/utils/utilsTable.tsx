@@ -17,7 +17,7 @@ export const columns: ColumnsType<DataTourisms> = [
     title: "Name",
     dataIndex: "tourist_name",
     key: "tourist_name",
-    // render: (name, { id }) => <a href={`/tourism-list/${id}`}>{name}</a>,
+    render: (name, { id }) => <a href={`/tourism-list/${id}`}>{name}</a>,
   },
   {
     title: "Email",
