@@ -66,6 +66,7 @@ const TourismList = () => {
             loading={isLoading}
             pagination={{
               total: getTourisms.data?.data?.total_pages,
+              defaultCurrent: parseInt(getTourisms.data?.data?.page as string),
               onChange: async (event: number) => fetchGetTourisms(event),
             }}
           />
