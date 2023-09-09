@@ -1,6 +1,5 @@
 // import { message, Space } from "antd";
 import type { ColumnsType } from "antd/es/table";
-import * as dayjs from "dayjs";
 // import * as dayjs from "dayjs";
 // import { BFFServiceInstance } from "../config/axios";
 import { DataTourisms } from "../types/DataTourims";
@@ -34,21 +33,21 @@ export const columns: ColumnsType<DataTourisms> = [
     title: "Profile Picture",
     dataIndex: "tourist_profilepicture",
     key: "tourist_profilepicture",
-    // render: (sourceImg) => (
-    //   <div className=" flex justify-center items-center">
-    //     <img
-    //       src={sourceImg}
-    //       alt={sourceImg}
-    //       className="w-10 h-10 flex justify-center"
-    //     />
-    //   </div>
-    // ),
+    render: (sourceImg) => (
+      <div className=" flex justify-center items-center">
+        <img
+          src={sourceImg}
+          alt={sourceImg}
+          className="w-10 h-10 flex justify-center"
+        />
+      </div>
+    ),
   },
   {
     title: "Created At",
     dataIndex: "createdat",
     key: "createdat",
-    render: (date) => <p>{dayjs(date).format("DD-MM-YYYY")}</p>,
+    // render: (date) => <p>{dayjs(date).format("DD-MM-YYYY")}</p>,
   },
   {
     title: "Action",
