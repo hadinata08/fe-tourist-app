@@ -33,15 +33,15 @@ export const columns: ColumnsType<DataTourisms> = [
     title: "Profile Picture",
     dataIndex: "tourist_profilepicture",
     key: "tourist_profilepicture",
-    render: (sourceImg) => (
-      <div className=" flex justify-center items-center">
-        <img
-          src={sourceImg}
-          alt={sourceImg}
-          className="w-10 h-10 flex justify-center"
-        />
-      </div>
-    ),
+    // render: (sourceImg) => (
+    //   <div className=" flex justify-center items-center">
+    //     <img
+    //       src={sourceImg}
+    //       alt={sourceImg}
+    //       className="w-10 h-10 flex justify-center"
+    //     />
+    //   </div>
+    // ),
   },
   {
     title: "Created At",
